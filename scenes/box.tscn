@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctsv03f4wd53d"]
+
+[ext_resource type="Texture2D" uid="uid://bx3m3thinrqcf" path="res://assets/king_and_pigs/Sprites/08-Box/Hit.png" id="1_forxn"]
+[ext_resource type="Texture2D" uid="uid://dpie2n1urgpxi" path="res://assets/king_and_pigs/Sprites/08-Box/Idle.png" id="2_em8cq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb4a6"]
+atlas = ExtResource("1_forxn")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5aa1"]
+atlas = ExtResource("2_em8cq")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fb5wi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb4a6")
+}],
+"loop": true,
+"name": &"hitted",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5aa1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8vcd"]
+size = Vector2(20, 14)
+
+[node name="Box" type="AnimatableBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fb5wi")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r8vcd")

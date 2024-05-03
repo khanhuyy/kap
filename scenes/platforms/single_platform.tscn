@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b162r43atnul0"]
+
+[ext_resource type="Texture2D" uid="uid://bgbe8c463xqug" path="res://assets/king_and_pigs/Sprites/14-TileSets/Decorations (32x32).png" id="1_4gimc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq14p"]
+size = Vector2(32, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fi5i"]
+atlas = ExtResource("1_4gimc")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqolj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fi5i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="SinglePlatform" type="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_iq14p")
+one_way_collision = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mqolj")
+animation = &"idle"
+autoplay = "idle"
